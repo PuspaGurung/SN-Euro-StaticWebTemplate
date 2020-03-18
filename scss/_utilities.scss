@@ -1,0 +1,232 @@
+//container
+.container {
+	width: 85vw;
+	margin: 0 auto;
+}
+
+// h1
+.heading-primary {
+	font-size: 5.5rem;
+}
+
+//h2
+.heading-secondary {
+	font-size: 4.5rem;
+	font-weight: 700;
+	margin-bottom: 3.5rem;
+	font-family: 'Open Sans';
+}
+
+//h3
+.heading-tertiary {
+	font-size: 2rem;
+	line-height: 2rem;
+	color: $color-black-primary;
+	font-weight: normal;
+	margin-bottom: 2rem;
+}
+
+//Header mark
+.header-mark {
+	text-transform: uppercase;
+}
+
+//Seperator
+.seperator-primary,
+.seperator-secondary,
+.seperator-tertiary {
+	position: relative;
+
+	&::after {
+		position: absolute;
+		content: "";
+	}
+}
+
+.seperator-primary {
+	padding-bottom: 2.5rem;
+
+	&:after {
+		width: 5rem;
+		height: .2rem;
+		background-color: $color-blue-primary;
+		left: 50%;
+		top: 100%;
+		@include transform-xy-minus50percent;
+	}
+}
+
+.seperator-secondary {
+	padding-bottom: 2.5rem;
+
+	&:after {
+		width: 5rem;
+		height: .2rem;
+		background-color: $color-blue-primary;
+		left: 0;
+		top: 100%;
+	}
+}
+
+.seperator-tertiary {
+	padding-bottom: 1rem;
+
+	&:after {
+		width: 3rem;
+		height: .2rem;
+		background-color: $color-blue-primary;
+		left: 0;
+		top: 100%;
+	}
+}
+
+//Button 
+.btn {
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	background-color: $color-blue-primary;
+	color: #e5f4ff;
+	padding: 1.5rem 2.5rem;
+	cursor: pointer;
+	position: relative;
+	z-index: 10;
+	overflow: hidden;
+	@include border-radius-md;
+	@include transition-delay-sm;
+
+	&::before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 0.5rem;
+		transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+		-webkit-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+		-moz-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+		-ms-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+		-o-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+		background-color: $color-green-primary;
+		@include border-radius-md;
+		@include transform-scale-y-sm;
+
+	}
+
+	&:hover::before {
+		@include transform-scale-y-md;
+		width: 100%;
+
+	}
+}
+
+//Anchor
+.anchor {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	cursor: pointer;
+
+	svg {
+		margin-left: 1rem;
+	}
+}
+
+//Section
+.section {
+	padding: 8.5rem 0;
+	overflow: hidden;
+}
+
+.section-header {
+	text-align: center;
+	margin-bottom: 6rem;
+
+	&__mark {
+		text-transform: uppercase;
+	}
+}
+
+// Anchor next-page
+.anchor-next-page {
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	color: $color-yellow;
+	border-radius: 50%;
+	height: 4rem;
+	width: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: #eee;
+	@include transform-xy-minus50percent;
+
+
+	&:hover {
+		color: $color-yellow;
+	}
+}
+
+.anchor-next-page--primary {
+	@include box-shadow-primary;
+	border: 1px solid $color-white-tertiary;
+
+	svg {
+		color: $color-blue-primary;
+	}
+
+	&:hover svg {
+		border: none;
+	}
+}
+
+.anchor-next-page--secondary {
+	border: 1px solid $color-white-tertiary;
+	color: $color-yellow;
+	-webkit-animation: action 0.5s infinite alternate;
+	animation: action 0.5s infinite alternate;
+
+	&:hover {
+		opacity: 0.7;
+	}
+
+	@-webkit-keyframes action {
+		0% {
+			transform: translateY(0);
+			-webkit-transform: translateY(0);
+			-moz-transform: translateY(0);
+			-ms-transform: translateY(0);
+			-o-transform: translateY(0);
+		}
+
+		100% {
+			transform: translateY(-10px);
+			-webkit-transform: translateY(-10px);
+			-moz-transform: translateY(-10px);
+			-ms-transform: translateY(-10px);
+			-o-transform: translateY(-10px);
+		}
+	}
+
+	@keyframes action {
+		0% {
+			transform: translateY(0);
+			-webkit-transform: translateY(0);
+			-moz-transform: translateY(0);
+			-ms-transform: translateY(0);
+			-o-transform: translateY(0);
+		}
+
+		100% {
+			transform: translateY(-10px);
+			-webkit-transform: translateY(-10px);
+			-moz-transform: translateY(-10px);
+			-ms-transform: translateY(-10px);
+			-o-transform: translateY(-10px);
+		}
+	}
+
+}

@@ -1,0 +1,79 @@
+#banner {
+    height: 81vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#slider {
+    width: 300%;
+    height: 100%;
+    display: flex;
+    @include transition-delay-sm;
+}
+
+.slider-item {
+    width: 33.3%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.573);
+    background-blend-mode: multiply;
+}
+
+.slider-content {
+    width: 70%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform-xy-minus50percent;
+
+    &__title {
+        color: $color-white-primary;
+        text-transform: uppercase;
+        margin-bottom: 4.5rem;
+        font-weight: 100;
+
+        span {
+            color: $color-yellow;
+            font-weight: 700;
+        }
+
+    }
+
+    &__para {
+        color: $color-white-tertiary;
+        margin-bottom: 4rem;
+        font-size: 2.5rem;
+    }
+
+    &__btn {
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+        background-color: $color-blue-primary;
+        color: $color-white-secondary;
+        padding: 1.5rem 2.5rem;
+        cursor: pointer;
+        @include border-radius-md;
+    }
+}
+
+#slider-item1 {
+    background-image: linear-gradient(rgba($color-blue-primary, .7), rgba($color-blue-primary, .7)), url(/img/banner/banner-3.jpg);
+    background-size: cover;
+}
+
+#slider-item2 {
+    background-image: linear-gradient(rgba($color-blue-primary, .7), rgba($color-blue-primary, .7)), url(/img/banner/banner-2.jpg);
+    background-size: cover;
+}
+
+#slider-item3 {
+    background-image: linear-gradient(rgba($color-blue-primary, .7), rgba($color-blue-primary, .7)), url(/img/banner/banner-4.jpg);
+    background-size: cover;
+}

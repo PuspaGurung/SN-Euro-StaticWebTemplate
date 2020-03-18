@@ -1,0 +1,131 @@
+#services {
+    position: relative;
+    margin-bottom: 4rem;
+
+
+    .services-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        .service-box {
+            position: relative;
+            border: 1px solid $color-white-tertiary;
+            background-color: $color-white-primary;
+            width: 24%;
+            @include box-shadow-tertiary;
+            @include transition-delay-sm;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+
+            // I-pad screen width
+            @include respond-mediaQuery(ipad) {
+                width: 49%;
+                margin-bottom: 3rem;
+            }
+
+            // Phone screen width
+            @include respond-mediaQuery(phone) {
+                width: 100%;
+                margin-bottom: 3rem;
+            }
+
+            &:hover {
+                transform: scale(1.02);
+                -webkit-transform: scale(1.02);
+                -moz-transform: scale(1.02);
+                -ms-transform: scale(1.02);
+                -o-transform: scale(1.02);
+            }
+
+            &__header {
+                padding: 2rem;
+                background-color: $color-blue-primary;
+                text-align: center;
+                min-height: 15rem;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+
+                .service-icon {
+                    font-size: 5rem;
+                    color: $color-green-primary;
+                    margin-bottom: 0.5rem;
+
+                    svg {
+                        color: $color-green-primary;
+                    }
+                }
+
+                .service-title {
+                    text-transform: uppercase;
+                    color: $color-white-primary;
+                    margin: 0;
+                }
+            }
+
+            &__body {
+
+                padding: 2rem 2rem 3rem 2rem;
+
+                .service-list {
+                    margin-bottom: 3rem;
+
+                    &__item {
+                        list-style: none;
+                        border-bottom: 1px solid $color-white-tertiary;
+                        padding: 1rem 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &:hover svg {
+                            color: $color-blue-primary;
+                        }
+
+                        svg {
+                            margin-right: 0.7rem;
+                            color: inherit;
+                            font-size: 1.3rem;
+                        }
+                    }
+                }
+
+                .service-anchor {
+                    text-align: center;
+
+                    .anchor {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        letter-spacing: 0.1rem;
+                        color: $color-blue-primary;
+                        @include transition-delay-sm;
+
+                        &:hover {
+                            color: $color-green-primary;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
+
+    // FOR ANIMATION ON SCROLL
+    .services-wrapper {
+        .service-box {
+            @include AOS-transition-transformCubicBezier-md;
+            @include AOS-fade-left;
+        }
+
+        &.visible .service-box {
+            @include AOS-fade-stop;
+
+        }
+    }
+
+}

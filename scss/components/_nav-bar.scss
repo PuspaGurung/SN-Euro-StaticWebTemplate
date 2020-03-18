@@ -1,0 +1,215 @@
+#nav-bar {
+    background-color: $color-white-primary;
+    @include transition-delay-sm;
+
+    &.scroll-fixed {
+        background: $color-white-primary;
+        position: fixed !important;
+        width: 100%;
+        z-index: 20000;
+        @include transition-delay-sm;
+        @include box-shadow-tertiary;
+
+        font-size: 1rem;
+
+        .nav-bar-wrapper {
+            .logo a {
+                width: 4rem;
+
+            }
+        }
+
+        @include respond-mediaQuery(ipad) {
+            font-size: 1.5rem;
+            position: static !important;
+        }
+    }
+
+    .nav-bar-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            a {
+                width: 6rem;
+                margin-right: 1rem;
+                @include transition-delay-sm;
+            }
+
+            strong {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                color: $color-blue-primary;
+            }
+
+        }
+
+        .show-nav {
+            display: block !important;
+            background-color: $color-blue-primary;
+            padding: 2rem;
+            position: fixed;
+            z-index: 300000;
+            top: 0 !important;
+            left: 0;
+            right: 0;
+            @include transition-delay-sm;
+
+            a.nav__item {
+                width: 60%;
+                display: inline-block;
+                color: $color-white-primary;
+                padding: 1rem 2rem;
+                text-align: center;
+
+                &::after {
+                    content: none;
+                }
+
+                &:hover {
+                    background-color: $color-white-primary;
+                    color: $color-blue-primary;
+                }
+            }
+        }
+
+        .nav {
+            display: flex;
+            flex-flow: row;
+
+            @include respond-mediaQuery(ipad) {
+                position: fixed;
+                top: -200%;
+            }
+
+
+
+            &__item {
+                display: inline-block;
+                padding: 1rem 0;
+                margin: 0 1.5rem 0;
+                color: $color-blue-primary;
+                text-transform: uppercase;
+                position: relative;
+                z-index: 100;
+                overflow: hidden;
+                @include transition-delay-sm;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 1px;
+                    width: 100%;
+                    background-color: $color-blue-primary;
+                    z-index: -1;
+                    color: $color-white-primary;
+                    top: 0;
+                    left: -110%;
+                    @include transition-delay-sm;
+                }
+
+
+            }
+
+        }
+
+        .nav__item:hover,
+        .active-nav {
+
+            &::after {
+                left: 0;
+            }
+        }
+    }
+}
+
+
+// Navigation trigger button
+#responsive-nav-trigger-btn {
+    display: none;
+    outline: none;
+    height: 6rem;
+    width: 6rem;
+    margin-right: 2.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: $color-white-secondary;
+    position: relative;
+    z-index: 8000000;
+    @include border-radius-lg;
+    @include box-shadow-primary;
+
+    @include respond-mediaQuery(ipad) {
+        display: block;
+    }
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    @include respond-mediaQuery(ipad) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: right;
+    }
+
+    .responsive-nav-icon {
+        display: inline-block;
+        width: 3rem;
+        height: 2px;
+        background-color: $color-black-secondary;
+        position: relative;
+        @include transition-delay-sm;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            width: 3rem;
+            left: 0;
+            height: 2px;
+            display: inline-block;
+            background-color: $color-black-secondary;
+            @include transition-delay-sm;
+        }
+
+        &::before {
+            top: -0.9rem;
+        }
+
+        &::after {
+            bottom: -0.9rem;
+        }
+    }
+}
+
+// show this clicss when user click on #responsive-nav-trigger-btn
+.active-trigger-btn {
+    .responsive-nav-icon {
+        background-color: transparent !important;
+
+        &::before {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            top: 0 !important;
+        }
+
+        &::after {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -ms-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            top: 0 !important;
+        }
+    }
+}

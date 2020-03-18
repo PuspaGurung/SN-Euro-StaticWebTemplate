@@ -1,0 +1,178 @@
+#about {
+
+    .about-wrapper {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        // on small screen
+        @include respond-mediaQuery(ipad) {
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
+        .about-img {
+            position: relative;
+            margin: 1.5rem 0 0 1.5rem;
+            width: 47%;
+
+            // Screen width <=phone width
+            @include respond-mediaQuery(phone) {
+                display: block;
+                width: 100%;
+                margin-bottom: 3rem;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 20rem;
+                height: 20rem;
+                background-color: $color-blue-primary;
+                top: -1.5rem;
+                left: -1.5rem;
+                z-index: -1;
+
+
+            }
+        }
+
+        .about-text {
+            background-color: #fff;
+            width: 57%;
+            padding: 0 0 0 5rem;
+            position: relative;
+            z-index: 10;
+            margin: 0 0 4rem;
+            width: 49%;
+
+            // Screen width <=phone width
+            @include respond-mediaQuery(phone) {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .abt-box {
+                padding: 2.5rem 5rem 2.5rem 2.5rem;
+                border: 1px solid #eee;
+                position: relative;
+                cursor: pointer;
+                margin-bottom: 1rem;
+                @include transition-delay-sm;
+
+                &:hover {
+                    border-color: white;
+                    @include box-shadow-tertiary;
+
+                    .expand-icon,
+                    .reduce-icon {
+                        color: $color-blue-primary;
+                    }
+
+                    .abt-box__head {
+                        color: $color-blue-primary;
+                    }
+                }
+
+                &__head {
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                &__body {
+                    height: 0;
+                    overflow: hidden;
+                    @include transition-delay-sm;
+
+                    p {
+                        margin-bottom: 1.5rem;
+                    }
+
+                }
+
+
+                .expand-icon,
+                .reduce-icon {
+                    position: absolute;
+                    top: 50%;
+                    right: 2rem;
+                    font-size: 0.7rem;
+                    border: 1px solid #ccc;
+                    height: 2rem;
+                    width: 2rem;
+                    padding: 1rem;
+                    color: inherit;
+                    align-items: center;
+                    justify-content: center;
+                    color: $color-black-tertiary;
+                    @include transform-y-minus50percent;
+                    @include border-radius-lg;
+                    @include transition-delay-sm;
+                }
+
+                .expand-icon {
+                    display: flex;
+                }
+
+                .reduce-icon {
+                    display: none;
+                }
+
+
+            }
+
+
+        }
+
+        .active-abt-box {
+            @include box-shadow-tertiary;
+
+            .expand-icon,
+            .reduce-icon {
+                color: $color-blue-primary !important;
+            }
+
+            .expand-icon {
+                display: none !important;
+            }
+
+            .reduce-icon {
+                display: flex !important;
+            }
+
+            .abt-box__head {
+                color: $color-blue-primary;
+            }
+
+            .abt-box__body {
+                height: auto;
+            }
+        }
+    }
+
+    // FOR ANIMATION ON SCROLL
+    .about-wrapper {
+
+        .about-img,
+        .about-text {
+            @include AOS-transition-transformCubicBezier-md;
+        }
+
+        .about-img {
+
+            @include AOS-fade-left;
+        }
+
+        .about-text {
+            @include AOS-fade-right;
+        }
+
+        &.visible .about-text,
+        &.visible .about-img {
+            @include AOS-fade-stop;
+
+        }
+    }
+}

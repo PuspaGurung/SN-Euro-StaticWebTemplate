@@ -1,0 +1,15 @@
+@import "./variables";
+@import "./mixins";
+@import "./base";
+@import "./utilities";
+
+// components
+@import './components/header';
+@import './components/nav-bar';
+@import './components/banner';
+@import './components/home-body';
+@import './components/services';
+@import './components/about';
+@import './components/web-service';
+@import './components/contact';
+@import './components/footer';
